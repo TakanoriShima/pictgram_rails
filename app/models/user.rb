@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   validates :name, presence: true
-  validates :email, presence: true
+  # validates :email, presence: true
   has_secure_password
   # パスワードの文字数を8~32文字のみ可能にしてください
   validates :password, length: { in: 8..32 }
@@ -19,6 +19,6 @@ class User < ApplicationRecord
 
   # urata
   #validates :name, presence: true, length: { maximum: 15 }
-  # validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
+  validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
   # validates :password, length:{ in:8..32 }, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/}
 end
