@@ -1,11 +1,15 @@
 class TopicsController < ApplicationController
   
   def index
-    @topics = Topic.all
+    @topics = Topic.all.includes(:favorite_users)
   end
   
   def new
-    @topic = Topic.new
+    if logged_in?
+      @topic = Topic.new
+    else
+      redirect_to root_path
+    end 
   end
 
   def create
